@@ -40,7 +40,8 @@ const App = () => {
     atualizarEvento({ ...evento, refeicoes: novaRefeicoes });
   };
 
-  const exportarPDF = (evento) => {
+  const exportarPDF = async (evento) => {
+    const { default: jsPDF } = await import('jspdf');
     const doc = new jsPDF();
     doc.setFontSize(14);
     doc.text(`Resumo do Evento: ${evento.nome}`, 10, 10);
